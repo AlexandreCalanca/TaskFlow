@@ -1,3 +1,4 @@
+import LoginScreen from './LoginScreen.jsx';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 
 import {
@@ -28,7 +29,8 @@ import {
 
   Edit,
 
-  AlertCircle
+  AlertCircle,
+  LogIn
 
 } from 'lucide-react';
 
@@ -538,6 +540,7 @@ export default function App() {
   const [sidebarVisible, setSidebarVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [headerMenuOpen, setHeaderMenuOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
   const [activeTaskModal, setActiveTaskModal] = useState(null);
   const [taskMenuOpen, setTaskMenuOpen] = useState(false);
   const [addTaskModalOpen, setAddTaskModalOpen] = useState(false);
@@ -722,6 +725,11 @@ export default function App() {
 
 
 
+  // A tela de login é visual por enquanto: o backend não possui autenticação.
+  if (loginOpen) {
+    return <LoginScreen darkMode={darkMode} onBack={() => setLoginOpen(false)} />;
+  }
+
   const themeClasses = darkMode ? 'dark bg-[#20212C] text-white' : 'bg-[#F4F7FD] text-[#000112]';
 
 
@@ -839,6 +847,16 @@ export default function App() {
           </button>
 
 
+
+          <button
+            type="button"
+            onClick={() => setLoginOpen(true)}
+            className={`flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3.5 rounded-full font-bold text-sm sm:text-base border transition-colors ${darkMode ? 'text-white border-[#635FC7] hover:bg-[#635FC7]/20' : 'text-[#635FC7] border-[#635FC7] hover:bg-[#635FC7]/10'}`}
+            aria-label="Abrir tela de login"
+          >
+            <LogIn className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="hidden sm:inline">Login</span>
+          </button>
 
           {/* Header 3-Dots Menu */}
 
