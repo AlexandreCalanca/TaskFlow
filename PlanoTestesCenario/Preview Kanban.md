@@ -74,7 +74,7 @@ Admin -- UC5
 ##### Passo 1a (Nome do quadro não informado)
 * O sistema verifica que o campo destinado ao nome do quadro está vazio e informa que seu preenchimento é obrigatório. O caso de uso retorna ao passo 3 do fluxo principal.
 
-##### Passo 1a (Falha ao cadastrar o quadro)
+##### Passo 1b (Falha ao cadastrar o quadro)
 * O sistema identifica um erro durante o cadastro e informa que não foi possível criar o quadro. O usuário poderá tentar novamente, retornando ao passo 4 do fluxo principal.
 
 ### 2.3. Selecionar Quadro (DCU002)
@@ -98,10 +98,10 @@ Admin -- UC5
 
 #### Fluxo de Exceção
 
-##### Passo 3a (Quadro não disponível)
+##### Passo 2a (Quadro não disponível)
 * O sistema verifica que o quadro selecionado não está mais disponível ou foi excluído. O sistema informa que não foi possível acessar o quadro e retorna ao passo 2 do fluxo principal.
 
-##### Passo 5a (Falha ao carregar as informações)
+##### Passo 2b (Falha ao carregar as informações)
 * O sistema identifica um erro ao recuperar as colunas e tarefas do quadro selecionado e informa que não foi possível carregar suas informações. O usuário poderá selecionar novamente o quadro, retornando ao passo 3 do fluxo principal.
 
 ### 2.3. Excluir Quadro (DCU003)
@@ -126,10 +126,10 @@ Admin -- UC5
 
 #### Fluxo de Exceção
 
-##### Passo 5a (Exclusão cancelada pelo usuário)
+##### Passo 3a (Exclusão cancelada pelo usuário)
 * O usuário decide cancelar a exclusão do quadro. O sistema interrompe a operação e mantém o quadro e suas informações cadastradas. O caso de uso é encerrado sem alterações.
 
-##### Passo 6a (Falha ao excluir o quadro)
+##### Passo 3b (Falha ao excluir o quadro)
 * O sistema identifica um erro durante a exclusão e informa que não foi possível remover o quadro. O quadro permanece cadastrado e o usuário poderá tentar novamente, retornando ao passo 3 do fluxo principal.
 
 ### 2.4. Criar Tarefa (DCU004)
@@ -159,10 +159,10 @@ Admin -- UC5
 ##### Passo 4a (Título da tarefa não informado)
 * O sistema verifica que o título da tarefa não foi preenchido e informa que esse campo é obrigatório. O caso de uso retorna ao passo 4 do fluxo principal.
 
-##### Passo 6a (Coluna de destino indisponível)
+##### Passo 4b (Coluna de destino indisponível)
 * O sistema verifica que a coluna selecionada não está disponível e informa que não é possível cadastrar a tarefa nessa coluna. O caso de uso retorna ao passo 6 do fluxo principal.
 
-##### Passo 8a (Falha ao cadastrar a tarefa)
+##### Passo 4c (Falha ao cadastrar a tarefa)
 * O sistema identifica um erro durante o cadastro e informa que não foi possível salvar a tarefa. O usuário poderá tentar novamente, retornando ao passo 7 do fluxo principal.
 
 ### 2.5. Excluir Tarefa (DCU005)
@@ -189,10 +189,10 @@ Admin -- UC5
 
 #### Fluxo de Exceção
 
-##### Passo 7a (Exclusão cancelada pelo usuário)
+##### Passo 5a (Exclusão cancelada pelo usuário)
 * O usuário decide cancelar a exclusão da tarefa. O sistema interrompe a operação e mantém a tarefa e suas subtarefas cadastradas. O caso de uso é encerrado sem alterações.
 
-##### Passo 8a (Falha ao excluir a tarefa)
+##### Passo 5b (Falha ao excluir a tarefa)
 * O sistema identifica um erro durante a exclusão e informa que não foi possível remover a tarefa. A tarefa permanece cadastrada e o usuário poderá tentar novamente, retornando ao passo 5 do fluxo principal.
 
 ### 2.6. Movimentar Tarefa (DCU006)
@@ -218,13 +218,13 @@ Admin -- UC5
 
 #### Fluxo de Exceção
 
-##### Passo 4a (Movimentação cancelada)
+##### Passo 6a (Movimentação cancelada)
 * O usuário interrompe a movimentação antes de posicionar a tarefa em uma coluna válida. O sistema mantém a tarefa em sua posição original. O caso de uso é encerrado sem alterações.
 
-##### Passo 5a (Coluna de destino inválida)
+##### Passo 6b (Coluna de destino inválida)
 * O sistema verifica que a coluna de destino não é válida e informa que não foi possível realizar a movimentação. A tarefa permanece na coluna original e o caso de uso retorna ao passo 3 do fluxo principal.
 
-##### Passo 7a (Falha ao registrar a movimentação)
+##### Passo 6c (Falha ao registrar a movimentação)
 * O sistema identifica um erro ao salvar a nova posição da tarefa e informa que não foi possível concluir a movimentação. O sistema mantém ou restaura a posição anteriormente registrada. O caso de uso retorna ao passo 3 do fluxo principal.
 
 ---
@@ -260,7 +260,7 @@ Admin -- UC5
 ##### Passo 7b (Informações obrigatórias da tarefa não preenchidas)
 * O sistema verifica que as informações obrigatórias da tarefa principal estão incompletas e informa quais campos precisam ser preenchidos. O caso de uso retorna ao passo 8 do fluxo principal.
 
-##### Passo 10a (Falha ao cadastrar as subtarefas)
+##### Passo 7c (Falha ao cadastrar as subtarefas)
 * O sistema identifica um erro durante o registro da tarefa e suas subtarefas e informa que não foi possível concluir o cadastro. O usuário poderá tentar novamente, retornando ao passo 9 do fluxo principal.
 
 ---
@@ -289,11 +289,11 @@ Admin -- UC5
 
 #### Fluxo de Exceção
 
-##### Passo 3a (Tarefa sem subtarefas)
+##### Passo 8a (Tarefa sem subtarefas)
 * O sistema verifica que a tarefa selecionada não possui subtarefas cadastradas e informa que não existem subtarefas para atualizar. O caso de uso é encerrado sem alterações.
 
-##### Passo 6a (Subtarefa não disponível)
+##### Passo 8b (Subtarefa não disponível)
 * O sistema verifica que a subtarefa selecionada não está mais disponível e informa que não é possível atualizar seu estado. O caso de uso retorna ao passo 3 do fluxo principal.
 
-##### Passo 7a (Falha ao atualizar a subtarefa)
+##### Passo 8c (Falha ao atualizar a subtarefa)
 * O sistema identifica um erro durante o registro da alteração e informa que não foi possível atualizar a subtarefa. O estado anteriormente registrado é mantido e o usuário poderá tentar novamente, retornando ao passo 4 do fluxo principal.
